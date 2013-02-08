@@ -97,5 +97,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  vagrant (~> 1.0)
+  vagrant (~> 1.0.6)
   veewee (~> 0.3.7)
