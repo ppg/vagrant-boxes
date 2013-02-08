@@ -20,10 +20,10 @@ List available base boxes:
 
     bundle exec vagrant basebox list
 
-Build a base box, export it, and add it to Vagrant:
+Build, export, and add a base box to Vagrant:
 
-    rake rebuild[<name>]
+    rake build[<name>]
 
-To build **all** base boxes, run the "rebuild" task with no arguments:
+To build **all** base boxes, run the "build" task with no arguments:
 
-    rake rebuild
+    rake build
