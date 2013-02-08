@@ -7,7 +7,7 @@ task :build, :basebox do |t,args|
     sh "bundle exec vagrant basebox export #{basebox} --force"
     version = Time.now.utc.strftime("%Y%m%d%H%M")
     File.rename("#{basebox}.box", "#{basebox}.#{version}.box")
-    sh "bundle exec vagrant box add #{basebox} #{basebox}.#{version}.box --force"
+    sh "bundle exec vagrant box add #{basebox}.#{version} #{basebox}.#{version}.box --force"
   end
 end
 
