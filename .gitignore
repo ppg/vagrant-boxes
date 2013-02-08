@@ -1,0 +1,4 @@
+*.box
+.bundle/
+bin/
+iso/
