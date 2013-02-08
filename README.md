@@ -1,4 +1,4 @@
-# vagrant-boxes
+# SendGrid Vagrant Boxes
 
 ## Getting Started
 
@@ -24,6 +24,6 @@ Build a base box, export it, and add it to Vagrant:
 
     rake rebuild[<name>]
 
-To build **all** base boxes, simply run the "rebuild" task with no arguments
+To build **all** base boxes, run the "rebuild" task with no arguments:
 
     rake rebuild
