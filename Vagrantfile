@@ -1,8 +1,8 @@
 Vagrant::Config.run do |config|
-  Dir.entries('definitions').reject { |obj| obj =~ /^\./ }.each do |vm|
-    config.vm.define vm.to_sym do |c|
-      c.vm.box = vm
-      c.vm.host_name = "#{vm}.localdomain"
+  Dir.entries(File.expand_path(File.join('~', '.vagrant.d', 'boxes'))).reject { |obj| obj =~ /^\./ }.each do |box|
+    config.vm.define box do |c|
+      c.vm.box = box
+      c.vm.host_name = "#{box}.localdomain"
       c.ssh.forward_agent = true
     end
   end
