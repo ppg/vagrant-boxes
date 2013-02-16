@@ -24,6 +24,10 @@ Build, export, and add a base box to Vagrant:
 
     rake build[<name>]
 
-To build **all** base boxes, run the "build" task with no arguments:
+To build, export, and add **all** base boxes to vagrant, run the "build" task with no arguments:
 
     rake build
+
+## Known Issues
+
+* [VeeWee does not work on Windows](https://github.com/jedi4ever/veewee/issues/6)

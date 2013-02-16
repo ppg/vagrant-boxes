@@ -1,6 +1,6 @@
 task :default => [:build]
 
-desc "Build, export, and add a base box to Vagrant"
+desc "Build, export, and add base boxes to Vagrant"
 task :build, :basebox do |t,args|
   (args.basebox.nil? ? Dir.entries('definitions').reject { |obj| obj =~ /^\./ } : [args.basebox]).each do |basebox|
     sh "bundle exec vagrant basebox build #{basebox} --force"
@@ -11,12 +11,12 @@ task :build, :basebox do |t,args|
   end
 end
 
-desc "Upload a base box to the repo"
+desc "Upload base boxes to the repo"
 task :upload, :basebox do |t,args|
   sh "rsync -avz --progress #{args.basebox.nil? ? "*.box" : args.basebox} root@repo.sendgrid.net:/var/www/repo/"
 end
 
-desc "Remove old files"
+desc "Remove build artifacts"
 task :clean do
   Dir['*.box'].each { |f| File.delete(f) }
 end
