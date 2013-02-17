@@ -1,4 +1,5 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "vagrant", "~> 1.0.6"
-gem "veewee", "~> 0.3.7"
+gem 'thor', '~> 0.17'
+gem 'vagrant', '~> 1.0'
+gem 'veewee', '~> 0.3'

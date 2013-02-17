@@ -14,19 +14,12 @@ Clone the repo and run bundler:
     cd vagrant-boxes
     bundle install
 
-## Building Base Boxes
+## Building Boxes
 
-List available base boxes:
-
-    bundle exec vagrant basebox list
-
-Build, export, and add a base box to Vagrant:
-
-    rake build[<name>]
-
-To build, export, and add **all** base boxes to vagrant, run the "build" task with no arguments:
-
-    rake build
+    thor box:list
+    thor box:build [BOX]
+    thor box:upload
+    thor box:clean
 
 ## Known Issues
 
