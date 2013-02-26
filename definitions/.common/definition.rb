@@ -1,5 +1,5 @@
 COMMON_DEFINITION = {
-  :boot_wait => "10",
+  :boot_wait => "5",
   :cpu_count => "1",
   :disk_format => "VDI",
   :disk_size => "40960",
@@ -7,7 +7,7 @@ COMMON_DEFINITION = {
   :iso_download_timeout => "1000",
   :kickstart_port => "7122",
   :kickstart_timeout => "10000",
-  :memory_size=> "384",
+  :memory_size => "384",
   :postinstall_timeout => "10000",
   :ssh_guest_port => "22",
   :ssh_host_port => "7222",
