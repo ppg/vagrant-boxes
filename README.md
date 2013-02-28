@@ -8,7 +8,7 @@ Install prerequisites:
 * [Vagrant](http://vagrantup.com/)
 * [Bundler](http://gembundler.com/)
 
-Clone the repo and run bundler:
+Clone the repository and run Bundler:
 
     git clone git@github.com:sendgrid-ops/vagrant-boxes.git
     cd vagrant-boxes
