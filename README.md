@@ -16,10 +16,9 @@ Clone the repository and run Bundler:
 
 ## Building Boxes
 
-    thor box:list
+    vagrant basebox list
     thor box:build [BOX]
     thor box:upload
-    thor box:clean
 
 ## Known Issues
 
