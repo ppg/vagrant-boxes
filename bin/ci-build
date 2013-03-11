@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+for f in $HOME/.rvm/scripts/rvm $PWD/.rvmrc; do
+  [[ -s "${f}" ]] && source "${f}"
+done
+
+bundle install
+thor box:build

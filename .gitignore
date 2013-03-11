@@ -2,5 +2,6 @@
 *.box
 .DS_Store
 .bundle/
-bin/
+bin/*
+!bin/ci-build
 iso/
