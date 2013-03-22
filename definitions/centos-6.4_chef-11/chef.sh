@@ -1,1 +1,1 @@
-../.chef-10/chef.sh
+../.chef-11/chef.sh
