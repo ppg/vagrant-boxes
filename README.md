@@ -2,17 +2,14 @@
 
 ## Getting Started
 
-Install prerequisites:
-
-* [VirtualBox](https://www.virtualbox.org/)
-* [Vagrant](http://vagrantup.com/)
-* [Bundler](http://gembundler.com/)
-
-Clone the repository and run Bundler:
+See [Workstation Setup](https://wiki.sendgrid.net/display/OPS/Workstation+Setup),
+then clone the repository and run bundler:
 
     git clone git@github.com:sendgrid-ops/vagrant-boxes.git
     cd vagrant-boxes
     bundle install
+
+See [Using Vagrant](https://wiki.sendgrid.net/display/OPS/Using+Vagrant)
 
 ## Building Boxes
 
