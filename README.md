@@ -17,7 +17,7 @@ Clone the repository and run Bundler:
 ## Building Boxes
 
     veewee vbox list
-    thor box:build [BOX]
+    thor box:build [name]
 
 ### Testing boxes
 
