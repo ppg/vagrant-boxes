@@ -16,8 +16,21 @@ Clone the repository and run Bundler:
 
 ## Building Boxes
 
-    vagrant basebox list
+    veewee vbox list
     thor box:build [BOX]
+
+### Testing boxes
+
+    vagrant list
+    vagrant up <name>
+    vagrant ssh <name>
+    vagrant destroy <name>
+
+Note that in RVM environments, all Vagrant commands must be prefixed with `rvm
+system do` in order to prevent RVM from using the RubyGems install of Vagrant.
+
+### Uploading Boxes
+
     thor box:upload
 
 ## New Definitions
