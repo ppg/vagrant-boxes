@@ -9,7 +9,14 @@ then clone the repository and run bundler:
     cd vagrant-boxes
     bundle install
 
-See [Using Vagrant](https://wiki.sendgrid.net/display/OPS/Using+Vagrant)
+**Important note about Vagrant:** VeeWee is still dependent on the old Vagrant
+gem for some reason. This means that in RVM environments, all Vagrant
+commands must be prefixed with `rvm system do` in order to prevent RVM from
+using the RubyGems install of Vagrant. Once you're done building base boxes,
+it's probably a good idea to uninstall the Vagrant gem so that it doesn't
+screw up other things in your environment.
+
+    gem uninstal vagrant
 
 ## Building Boxes
 
@@ -22,9 +29,6 @@ See [Using Vagrant](https://wiki.sendgrid.net/display/OPS/Using+Vagrant)
     vagrant up <name>
     vagrant ssh <name>
     vagrant destroy <name>
-
-Note that in RVM environments, all Vagrant commands must be prefixed with `rvm
-system do` in order to prevent RVM from using the RubyGems install of Vagrant.
 
 ### Uploading Boxes
 
