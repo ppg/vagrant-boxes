@@ -12,11 +12,11 @@ then clone the repository and run bundler:
 **Important note about Vagrant:** VeeWee is still dependent on the old Vagrant
 gem for some reason. This means that in RVM environments, all Vagrant
 commands must be prefixed with `rvm system do` in order to prevent RVM from
-using the RubyGems install of Vagrant. Once you're done building base boxes,
-it's probably a good idea to uninstall the Vagrant gem so that it doesn't
-screw up other things in your environment.
+using the RubyGems install of Vagrant. If you're not using RVM, it's probably a
+good idea to uninstall the Vagrant gem once you're done working in this
+repository, so that it doesn't screw up other things in your environment.
 
-    gem uninstal vagrant
+    gem uninstall vagrant
 
 ## Building Boxes
 
