@@ -1,6 +1,10 @@
 set -eux
 
 # Configure sudo for Vagrant
-sed -i -e '/Defaults\s\+env_reset/a Defaults\texempt_group=admin' /etc/sudoers
-sed -i -e '/Defaults\s\+exempt_group/a Defaults\tenv_keep += "SSH_AUTH_SOCK"' /etc/sudoers
-sed -i -e 's/^%admin.*$/%admin ALL=NOPASSWD: ALL/' /etc/sudoers
+cat << 'EOF' > /etc/sudoers.d/vagrant
+Defaults exempt_group += vagrant
+Defaults env_keep += SSH_AUTH_SOCK
+Defaults !requiretty
+vagrant ALL=(ALL) NOPASSWD: ALL
+EOF
+chmod 0440 /etc/sudoers.d/vagrant

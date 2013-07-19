@@ -18,6 +18,8 @@ repository, so that it doesn't screw up other things in your environment.
 
     gem uninstall vagrant
 
+We should eventually use [Packer](http://www.packer.io/) instead of VeeWee.
+
 ## Building Boxes
 
     veewee vbox list
