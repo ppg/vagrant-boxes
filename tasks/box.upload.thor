@@ -20,7 +20,11 @@ class Box < Thor
   private
 
   def sum_and_upload(box)
-    sha = Digest::SHA1.hexdigest(IO.read(box))
+    # Note: We sha1sum the imported disk (not the box itself) because it's the
+    # only reasonable thing to compare against once a box is installed. This is
+    # used by the tests at: https://github.com/sendgrid-ops/workstation_setup
+    sha_path = File.join(Dir.home, '.vagrant.d', 'boxes', File.basename(box, '.box'), 'virtualbox', 'box-disk1.vmdk')
+    sha = Digest::SHA1.hexdigest(IO.read(sha_path))
     run "echo '#{sha}' > #{box}.sha1"
     run "rsync -avz --progress #{box} #{box}.sha1 #{options[:repo]}"
   end
