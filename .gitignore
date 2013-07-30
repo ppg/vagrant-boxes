@@ -1,5 +1,6 @@
 .vagrant
 *.box
+*.sha1
 .DS_Store
 .bundle/
 bin/*
