@@ -16,7 +16,6 @@ class Box < Thor
         b_final << ".#{Time.now.utc.strftime("%Y%m%d%H%M")}" if options[:version]
         File.delete("#{b_final}.box") if File.exists?("#{b_final}.box")
         run "#{rvm_command} vagrant package --base #{b} --output #{b_final}.box"
-        run "#{rvm_command} vagrant box add #{b_final} #{b_final}.box --force"
       end
     end
   end
