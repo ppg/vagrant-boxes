@@ -16,7 +16,7 @@ class Box < Thor
   private
 
   def vagrant_box_add(box)
-    run "echo vagrant box add #{box} #{File.basename(box, File.extname(box))} --force"
+    run "vagrant box add #{File.basename(box, File.extname(box))} #{box} --force"
   end
 
 end
