@@ -1,13 +1,7 @@
 # vagrant_base_box cookbook
 
-# Requirements
+This cookbook provisions a Vagrant base box.
 
-# Usage
+## Usage:
 
-# Attributes
-
-# Recipes
-
-# Author
-
-Author:: SendGrid (<operations@sendgrid.com>)
+Just add `vagrant_base_box` to Packer's run list.

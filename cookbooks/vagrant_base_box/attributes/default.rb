@@ -7,7 +7,7 @@ default['vagrant_base_box']['virtualbox']['dependencies'] = case platform
 when 'centos'
   {
     'gcc' => nil,
-    'kernel-devel' => node['kernel']['release'].split('.')[0...-1].join('.') # Remove architecture
+    'kernel-devel' => node['kernel']['release'].split('.')[0...-1].join('.') # Remove architecture from the version
   }
 when 'ubuntu'
   {
