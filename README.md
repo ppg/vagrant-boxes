@@ -5,9 +5,10 @@ This repository uses [Packer](http://www.packer.io) to build base bases for
 
 ## How it Works
 
-Packer reads its configuration from a .json file and uses Chef to provision
-base boxes. As you'd expect, all provisioning cookbooks include their own
-Test-Kitchen suites to allow local testing before releasing new base boxes.
+Packer reads its configuration from a "template" stored as a .json file and
+uses Chef to provision base boxes. As you'd expect, all provisioning cookbooks
+include their own Test-Kitchen suites to allow local testing before releasing
+new base boxes.
 
 ## Getting Started
 
@@ -40,6 +41,10 @@ so that Packer knows which version of Chef to install:
 
     packer build -var chef_version=10.30.2 sendgrid.json # Legacy Chef 10 boxes
     packer build -var chef_version=11.8.2 -only=centos-6 sendgrid.json
+
+If the builder fails, you can try running it again with the `-debug` option or
+with `PACKER_LOG=1`. You can also set `"headless": false` in the Packer
+template.
 
 Once the boxes are built, you may want to do some final testing by importing
 them into Vagrant:
