@@ -5,6 +5,7 @@ class Box < Thor
 
   def clean
     run 'rm *.box'
+    run 'rm *.sha1'
   end
 
 end
