@@ -6,12 +6,12 @@
     {
       "name": "centos-6",
       "type": "virtualbox-iso",
+      "guest_os_type": "RedHat_64",
       "vboxmanage": [
-        ["modifyvm", "{{.Name}}", "--memory", "480"],
+        ["modifyvm", "{{.Name}}", "--memory", "512"],
         ["modifyvm", "{{.Name}}", "--natdnshostresolver1", "on"],
         ["modifyvm", "{{.Name}}", "--natdnsproxy1", "on"]
       ],
-      "guest_os_type": "RedHat_64",
       "iso_url": "http://mirrors.kernel.org/centos/6/isos/x86_64/CentOS-6.5-x86_64-bin-DVD1.iso",
       "iso_checksum": "83221db52687c7b857e65bfe60787838",
       "iso_checksum_type": "md5",
@@ -30,6 +30,9 @@
       "name": "ubuntu-10.04",
       "type": "virtualbox-iso",
       "guest_os_type": "Ubuntu_64",
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "512"]
+      ],
       "iso_url": "http://releases.ubuntu.com/10.04.4/ubuntu-10.04.4-server-amd64.iso",
       "iso_checksum": "9b218654cdcdf9722171648c52f8a088",
       "iso_checksum_type": "md5",
