@@ -16,6 +16,7 @@
       "iso_checksum": "83221db52687c7b857e65bfe60787838",
       "iso_checksum_type": "md5",
       "http_directory": "http",
+      "headless": true,
       "boot_wait": "5s",
       "boot_command": [
         "<tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/centos-6.cfg<enter>"
@@ -33,6 +34,7 @@
       "iso_checksum": "9b218654cdcdf9722171648c52f8a088",
       "iso_checksum_type": "md5",
       "http_directory": "http",
+      "headless": true,
       "boot_wait": "5s",
       "boot_command": [
         "<esc><esc><enter><wait>",
