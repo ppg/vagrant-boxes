@@ -1,0 +1,78 @@
+{
+  "variables": {
+    "chef_version": null
+  },
+  "builders": [
+    {
+      "name": "centos-6",
+      "type": "virtualbox-iso",
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "480"],
+        ["modifyvm", "{{.Name}}", "--natdnshostresolver1", "on"],
+        ["modifyvm", "{{.Name}}", "--natdnsproxy1", "on"]
+      ],
+      "guest_os_type": "RedHat_64",
+      "iso_url": "http://mirrors.kernel.org/centos/6/isos/x86_64/CentOS-6.5-x86_64-bin-DVD1.iso",
+      "iso_checksum": "83221db52687c7b857e65bfe60787838",
+      "iso_checksum_type": "md5",
+      "http_directory": "http",
+      "boot_wait": "5s",
+      "boot_command": [
+        "<tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/centos-6.cfg<enter>"
+      ],
+      "ssh_wait_timeout": "10m",
+      "ssh_username": "root",
+      "ssh_password": "vagrant",
+      "shutdown_command": "shutdown -h now"
+    },
+    {
+      "name": "ubuntu-10.04",
+      "type": "virtualbox-iso",
+      "guest_os_type": "Ubuntu_64",
+      "iso_url": "http://releases.ubuntu.com/10.04.4/ubuntu-10.04.4-server-amd64.iso",
+      "iso_checksum": "9b218654cdcdf9722171648c52f8a088",
+      "iso_checksum_type": "md5",
+      "http_directory": "http",
+      "boot_wait": "5s",
+      "boot_command": [
+        "<esc><esc><enter><wait>",
+        "/install/vmlinuz ",
+        "auto ",
+        "console-setup/ask_detect=false ",
+        "console-setup/layoutcode=us ",
+        "console-setup/modelcode=pc105 ",
+        "debconf/frontend=noninteractive ",
+        "debian-installer=en_US ",
+        "domain=vagrantup.com ",
+        "fb=false ",
+        "hostname=vagrant-ubuntu ",
+        "initrd=/install/initrd.gz ",
+        "kbd-chooser/method=us ",
+        "keyboard-configuration/layout=USA ",
+        "keyboard-configuration/variant=USA ",
+        "locale=en_US ",
+        "noapic ",
+        "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/ubuntu-10.04.cfg ",
+        "--<enter>"
+      ],
+      "ssh_wait_timeout": "10m",
+      "ssh_username": "root",
+      "ssh_password": "vagrant",
+      "shutdown_command": "shutdown -h now"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "chef-solo",
+      "install_command": "wget -O - http://opscode.com/chef/install.sh | bash -s -- -v {{user `chef_version`}}",
+      "cookbook_paths": ["./cookbooks"],
+      "run_list": ["vagrant_base_box"]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "sendgrid_{{.BuildName}}_chef-{{user `chef_version`}}.box"
+    }
+  ]
+}

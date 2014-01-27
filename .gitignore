@@ -2,7 +2,5 @@
 *.box
 *.sha1
 .DS_Store
-.bundle/
-bin/*
-!bin/ci-build
-iso/
+.kitchen/
+packer_cache/

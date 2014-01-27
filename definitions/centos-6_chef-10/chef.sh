@@ -1,1 +1,0 @@
-../.chef-10/chef.sh

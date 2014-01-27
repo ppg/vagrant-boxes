@@ -1,0 +1,22 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-10.04
+  - name: centos-6.5
+
+suites:
+  - name: default
+    run_list:
+      - recipe[minitest-handler]
+      - recipe[vagrant_base_box::default]
+    attributes:
+      vagrant_base_box:
+        virtualbox:
+          guest_additions:
+            download: true
+            version_file: /home/vagrant/.vbox_version

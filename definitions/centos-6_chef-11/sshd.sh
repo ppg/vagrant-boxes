@@ -1,1 +1,0 @@
-../.centos/sshd.sh
