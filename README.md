@@ -1,50 +1,80 @@
 # SendGrid Vagrant Boxes
 
+This repository uses [Packer](http://www.packer.io) to build base bases for
+[Vagrant](http://www.vagrantup.com/).
+
+## How it Works
+
+Packer reads its configuration from a .json file and uses Chef to provision
+base boxes. As you'd expect, all provisioning cookbooks include their own
+Test-Kitchen suites to allow local testing before releasing new base boxes.
+
 ## Getting Started
 
 See [Workstation Setup](https://wiki.sendgrid.net/display/OPS/Workstation+Setup),
-then clone the repository and run bundler:
+then clone the repository:
 
     git clone git@github.com:sendgrid-ops/vagrant-boxes.git
     cd vagrant-boxes
-    bundle install
 
-**Important note about Vagrant:** VeeWee is still dependent on the old Vagrant
-gem for some reason. This means that in RVM environments, all Vagrant
-commands must be prefixed with `rvm system do` in order to prevent RVM from
-using the RubyGems install of Vagrant. If you're not using RVM, it's probably a
-good idea to uninstall the Vagrant gem once you're done working in this
-repository, so that it doesn't screw up other things in your environment.
+Install Packer:
 
-    gem uninstall vagrant
-
-We should eventually use [Packer](http://www.packer.io/) instead of VeeWee.
+    brew install packer
 
 ## Building Boxes
 
-    veewee vbox list
-    thor box:build [name]
+Before releasing new base boxes, please verify your changes by testing them
+within the appropriate cookbook repo:
 
-### Testing boxes
+    cd cookbooks/vagrant_base_box
+    kitchen converge [...]
+    kitchen destroy [...]
+    cd -
 
-    vagrant list
-    vagrant up <name>
-    vagrant ssh <name>
-    vagrant destroy <name>
+Remove old build artifacts:
 
-### Uploading Boxes
+    thor box:clean
 
-    thor box:upload
+Now we can build new boxes. Note that the `chef_version` variable is required
+so that Packer knows which version of Chef to install:
 
-## New Definitions
+    packer build -var chef_version=10.30.2 sendgrid.json # Legacy Chef 10 boxes
+    packer build -var chef_version=11.8.2 -only=centos-6 sendgrid.json
 
-The definitions directory is inspired by Opscode's [Bento](https://github.com/opscode/bento)
-project. Since the definitions are modularized, it should be sufficient in most
-cases to copy an old definition and make the appropriate updates. For example:
+Once the boxes are built, you may want to do some final testing by importing
+them into Vagrant:
 
-    cp -R definitions/old definitions/new
-    vi definitions/new/definition.rb # Change iso parameters
+    thor box:import [box]
+    vagrant box list
+    vagrant up [vm]
+    vagrant ssh [vm]
+    vagrant destroy
+
+## Uploading Boxes
+
+    thor box:upload [box]
+
+## About SendGrid Base Boxes
+
+[BENTO-21](https://tickets.opscode.com/browse/BENTO-21) is the main reason we
+don't just use the Opscode base boxes. Opscode gives conflicting advice about
+whether their boxes are fit for public consumption, so it's safer (and not
+that difficult) to just maintain our own.
+
+We currently support the following platforms:
+
+- Centos 6 + Chef 11
+- Centos 6 + Chef 10 (Legacy)
+- Ubuntu 10.04 + Chef 10 (Legacy)
+
+We set the following VirtualBox options to prevent slow networking on CentOS 6
+(See: [Vagrant 1172](https://github.com/mitchellh/vagrant/issues/1172)):
+
+    --natdnsproxy1 off
+    --natdnshostresolver1 off
 
 ## Known Issues
 
-* [VeeWee does not work on Windows](https://github.com/jedi4ever/veewee/issues/6)
+- Currently, integration tests are only run by Test-Kitchen. This means Packer
+itself does not run any tests after building a box. We might want to fix this
+someday.

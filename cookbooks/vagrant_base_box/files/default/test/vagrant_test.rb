@@ -8,7 +8,7 @@ describe_recipe 'vagrant_base_box::vagrant' do
   end
 
   it 'configures sudo for Vagrant' do
-    [ 'exempt_group+=vagrant', 'env_keep+=SSH_AUTH_SOCK', '!requiretty', '(ALL) NOPASSWD: ALL' ].each do |grep|
+    ['exempt_group+=vagrant', 'env_keep+=SSH_AUTH_SOCK', '!requiretty', '(ALL) NOPASSWD: ALL'].each do |grep|
       assert_sh "sudo -l -U #{node['vagrant_base_box']['vagrant']['user']} | grep '#{grep}'"
     end
   end

@@ -14,6 +14,7 @@ end
   virtualbox
   vagrant
   sshd
+  services
   clean
 }.each do |obj|
   include_recipe "vagrant_base_box::#{obj}"
