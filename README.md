@@ -42,9 +42,9 @@ so that Packer knows which version of Chef to install:
     packer build -var chef_version=10.30.2 sendgrid.json # Legacy Chef 10 boxes
     packer build -var chef_version=11.8.2 -only=centos-6 sendgrid.json
 
-If the builder fails, you can try running it again with the `-debug` option or
-with `PACKER_LOG=1`. You can also set `"headless": false` in the Packer
-template.
+If Packer fails, you can debug it by running the command again with the
+`-debug` option or with `PACKER_LOG=1`. You can also set `"headless": false` in
+the Packer template.
 
 Once the boxes are built, you may want to do some final testing by importing
 them into Vagrant:
