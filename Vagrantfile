@@ -1,6 +1,6 @@
 BOXES_PATH = File.expand_path(File.join('.vagrant.d', 'boxes'), Dir.home)
 
-Vagrant::Config.run do |config|
+Vagrant.configure('2') do |config|
   Dir[File.join(BOXES_PATH, '*')].map { |obj| File.basename(obj) }.each do |box|
     config.vm.define box do |c|
       c.vm.box = box
