@@ -22,6 +22,15 @@ default['vagrant_base_box']['vagrant']['user'] = 'vagrant'
 default['vagrant_base_box']['vagrant']['home'] = '/home/vagrant'
 default['vagrant_base_box']['vagrant']['password'] = '$1$HJpcvPyh$B48V.Ew2qABDudFilqTg/1' # openssl passwd -1 'vagrant'
 
+default['vagrant_base_box']['packages']['install'] = case platform
+when 'centos'
+  %w{ nfs-utils }
+when 'ubuntu'
+  %w{ nfs-client }
+else
+  []
+end
+
 default['vagrant_base_box']['services']['disable'] = [
   'postfix' # Conflicts with ismtpd
 ]

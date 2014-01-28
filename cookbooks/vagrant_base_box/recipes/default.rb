@@ -11,6 +11,7 @@ execute 'aptitude update' do
 end
 
 %w{
+  packages
   virtualbox
   vagrant
   sshd

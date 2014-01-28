@@ -1,0 +1,8 @@
+Vagrant.configure("2") do |config|
+  config.vm.provider :virtualbox do |vbox|
+    # Some options don't seem to get baked into the base box unless they're
+    # added here.
+    vbox.customize ['modifyvm', :id, '--natdnsproxy1', 'off']
+    vbox.customize ['modifyvm', :id, '--natdnshostresolver1', 'off']
+  end
+end
