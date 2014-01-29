@@ -3,12 +3,28 @@
 This repository uses [Packer](http://www.packer.io) to build base bases for
 [Vagrant](http://www.vagrantup.com/).
 
+[BENTO-21](https://tickets.opscode.com/browse/BENTO-21) is a good example of
+why we don't just use the Opscode base boxes. Opscode gives conflicting advice
+about whether their boxes are fit for public consumption, so it's safer (and
+not that difficult) to just maintain our own.
+
+We currently support the following platforms:
+
+- Centos 6 + Chef 11
+- Centos 6 + Chef 10 (Legacy)
+- Ubuntu 10.04 + Chef 10 (Legacy)
+
+We set the following VirtualBox options to prevent slow networking on CentOS 6
+(See: [Vagrant 1172](https://github.com/mitchellh/vagrant/issues/1172)):
+
+    --natdnsproxy1 off
+    --natdnshostresolver1 off
+
 ## How it Works
 
-Packer reads its configuration from a "template" stored as a .json file and
-uses Chef to provision base boxes. As you'd expect, all provisioning cookbooks
-include their own Test-Kitchen suites to allow local testing before releasing
-new base boxes.
+Packer reads its configuration from `sendgrid.json` and uses Chef to provision
+base boxes. As you'd expect, all provisioning cookbooks include their own
+Test-Kitchen suites to allow local testing before releasing new base boxes.
 
 ## Getting Started
 
@@ -58,25 +74,6 @@ them into Vagrant:
 ## Uploading Boxes
 
     thor box:upload [box]
-
-## About SendGrid Base Boxes
-
-[BENTO-21](https://tickets.opscode.com/browse/BENTO-21) is the main reason we
-don't just use the Opscode base boxes. Opscode gives conflicting advice about
-whether their boxes are fit for public consumption, so it's safer (and not
-that difficult) to just maintain our own.
-
-We currently support the following platforms:
-
-- Centos 6 + Chef 11
-- Centos 6 + Chef 10 (Legacy)
-- Ubuntu 10.04 + Chef 10 (Legacy)
-
-We set the following VirtualBox options to prevent slow networking on CentOS 6
-(See: [Vagrant 1172](https://github.com/mitchellh/vagrant/issues/1172)):
-
-    --natdnsproxy1 off
-    --natdnshostresolver1 off
 
 ## Known Issues
 
