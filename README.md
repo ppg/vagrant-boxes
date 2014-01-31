@@ -14,6 +14,8 @@ We currently support the following platforms:
 - Centos 6 + Chef 10 (Legacy)
 - Ubuntu 10.04 + Chef 10 (Legacy)
 
+Our boxes are currently hosted at: http://repo.sjc1.sendgrid.net/images/virtualbox/
+
 We set the following VirtualBox options to prevent slow networking on CentOS 6
 (See: [Vagrant 1172](https://github.com/mitchellh/vagrant/issues/1172)):
 
