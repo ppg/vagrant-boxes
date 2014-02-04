@@ -14,7 +14,7 @@ We currently support the following platforms:
 - Centos 6 + Chef 10 (Legacy)
 - Ubuntu 10.04 + Chef 10 (Legacy)
 
-Our boxes are currently hosted at: http://repo.sjc1.sendgrid.net/images/virtualbox/
+Our boxes are currently hosted at: http://repo.sjc1.sendgrid.net/images/vagrant/
 
 We set the following VirtualBox options to prevent slow networking on CentOS 6
 (See: [Vagrant 1172](https://github.com/mitchellh/vagrant/issues/1172)):
@@ -42,8 +42,8 @@ Install Packer:
 
 ## Building Boxes
 
-Before releasing new base boxes, please verify your changes by testing them
-within the appropriate cookbook repo:
+Before releasing new base boxes, please verify your changes (if any) by testing
+them within the appropriate cookbook repo:
 
     cd cookbooks/vagrant_base_box
     kitchen converge [...]
@@ -58,16 +58,19 @@ Now we can build new boxes. Note that the `chef_version` variable is required
 so that Packer knows which version of Chef to install:
 
     packer build -var chef_version=10.30.2 sendgrid.json # Legacy Chef 10 boxes
-    packer build -var chef_version=11.8.2 -only=centos-6 sendgrid.json
+    packer build -var chef_version=11.8.2 -except=ubuntu-10.04 sendgrid.json
 
 If Packer fails, you can debug it by running the command again with the
-`-debug` option or with `PACKER_LOG=1`. You can also set `"headless": false` in
-the Packer template.
+`-debug` option or with `PACKER_LOG=1`. You might also want to try setting
+`"headless": false` in the Packer template.
 
-Once the boxes are built, you may want to do some final testing by importing
-them into Vagrant:
+Once the boxes are built, import them into Vagrant:
 
     thor box:import [box]
+
+You may want do some final testing by importing them into Vagrant and seeing if
+they work:
+
     vagrant box list
     vagrant up [vm]
     vagrant ssh [vm]
@@ -76,6 +79,14 @@ them into Vagrant:
 ## Uploading Boxes
 
     thor box:upload [box]
+
+## Updating Boxes
+
+Once the new boxes are available, the next step is to update all the clients
+that use them:
+
+- There's a `thor` task in [chef-data](https://github.com/sendgrid-ops/chef-data)
+to update every cookbook's `.kitchen.yml`
 
 ## Known Issues
 
