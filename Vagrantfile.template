@@ -1,11 +1,13 @@
 # http://docs.vagrantup.com/v2/vagrantfile/
 #
 # Some VM customizations won't get baked into the base box unless they're set
-# here. Interestingly, the natdns* options don't seem to do anything at all
-# during OS install time, so this is apparently the only way to set them.
+# here.
 #
 Vagrant.configure("2") do |config|
   config.vm.provider :virtualbox do |vbox|
+    # Interestingly, the natdns* options don't seem to do anything at all
+    # during OS install time, so this is apparently the only way to set them.
+    # See: https://github.com/mitchellh/vagrant/issues/1172
     vbox.customize ['modifyvm', :id, '--natdnsproxy1', 'off']
     vbox.customize ['modifyvm', :id, '--natdnshostresolver1', 'off']
   end
