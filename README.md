@@ -55,10 +55,11 @@ Remove old build artifacts:
     thor box:clean
 
 Now we can build new boxes. Note that the `chef_version` variable is required
-so that Packer knows which version of Chef to install:
+so that Packer knows which version of Chef to install. You can see what
+versions are available at http://www.getchef.com/chef/install/:
 
-    packer build -var chef_version=10.30.2 sendgrid.json # Legacy Chef 10 boxes
-    packer build -var chef_version=11.8.2 -except=ubuntu-10.04 sendgrid.json
+    packer build -var chef_version=10.30.4 sendgrid.json # Legacy Chef 10 boxes
+    packer build -var chef_version=11.10.4 -except=ubuntu-10.04 sendgrid.json
 
 If Packer fails, you can debug it by running the command again with the
 `-debug` option or with `PACKER_LOG=1`. You might also want to try setting
