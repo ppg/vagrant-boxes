@@ -79,7 +79,7 @@
     {
       "type": "vagrant",
       "vagrantfile_template": "Vagrantfile.template",
-      "output": "sendgrid_{{.BuildName}}_chef-{{user `chef_version`}}_{{timestamp}}.box"
+      "output": "sendgrid_{{.BuildName}}_chef-{{user `chef_version`}}.box"
     }
   ]
 }
