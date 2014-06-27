@@ -16,7 +16,7 @@
       "iso_url": "http://mirrors.kernel.org/centos/{{user `centos_version_major`}}/isos/x86_64/CentOS-{{user `centos_version_major`}}.{{user `centos_version_minor`}}-x86_64-bin-DVD1.iso",
       "iso_checksum": "{{user `centos_iso_checksum`}}",
       "iso_checksum_type": "md5",
-      "http_directory": ".",
+      "http_directory": "http",
       "headless": true,
       "boot_wait": "5s",
       "boot_command": [
@@ -37,7 +37,7 @@
       "iso_url": "http://releases.ubuntu.com/10.04.4/ubuntu-10.04.4-server-amd64.iso",
       "iso_checksum": "9b218654cdcdf9722171648c52f8a088",
       "iso_checksum_type": "md5",
-      "http_directory": ".",
+      "http_directory": "http",
       "headless": true,
       "boot_wait": "5s",
       "boot_command": [
