@@ -1,0 +1,33 @@
+{
+  "name": "sendgrid_centos-6_chef-11",
+  "description": "CentOS 6 with Chef 11",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "providers": [{
+        "name": "virtualbox",
+        "url": "sendgrid_centos-6.5_chef-11.6.2.box",
+        "checksum_type": "sha1",
+        "checksum": "FIXME"
+      }]
+    },
+    {
+      "version": "0.2.0",
+      "providers": [{
+        "name": "virtualbox",
+        "url": "sendgrid_centos-6.5_chef-11.10.4.box",
+        "checksum_type": "sha1",
+        "checksum": "FIXME"
+      }]
+    },
+    {
+      "version": "0.3.0",
+      "providers": [{
+        "name": "virtualbox",
+        "url": "/Users/mike/projects/sendgrid-ops/vagrant_boxes/sendgrid_centos-6.5_chef-11.12.4.box",
+        "checksum_type": "sha1",
+        "checksum": "84580e17ebef19409712e41249eb9bd9da0d0310"
+      }]
+    }
+  ]
+}
