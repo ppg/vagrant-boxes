@@ -77,6 +77,18 @@ they work:
     vagrant ssh [vm]
     vagrant destroy
 
+### Building "devtools" Boxes
+
+The "devtools" boxes have common development tools preinstalled to speed up
+Chef runs. Use caution when using these boxes for testing cookbooks, as it may
+be difficult to know if your cookbook actually installed everything it needed,
+or if it's relying on something that happened to already be installed on the
+box.
+
+    vagrant status
+    vagrant provision [vm]
+    vagrant package [vm] --output [vm].box
+
 ## Uploading Boxes
 
     thor box:upload [box]
