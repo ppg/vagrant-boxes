@@ -50,10 +50,6 @@ them within the appropriate cookbook repo:
     kitchen destroy [...]
     cd -
 
-Remove old build artifacts:
-
-    thor box:clean
-
 Now we can build new boxes. Note that the `chef_version` variable is required
 so that Packer knows which version of Chef to install. You can see what
 versions are available at http://www.getchef.com/chef/install/:
@@ -86,14 +82,18 @@ or if it's relying on something that happened to already be installed on the
 box.
 
     vagrant status
-    vagrant provision [vm]
-    vagrant package [vm] --output [vm].box
+    thor box:devtools <box>
 
 ## Uploading Boxes
 
+Before uploading a new box to the repository, remember to checksum it and
+update the metadata appropriately:
+
+    gsha1sum <box>
+    open metadata/...
     thor box:upload [box]
 
-## Updating Boxes
+## Updating Box URLs in other repositories
 
 Once the new boxes are available, the next step is to update all the clients
 that use them. Start by downloading all the cookbooks via the Thor task in

@@ -32,7 +32,7 @@ GRAPH
   sendgrid_minitest-handler (0.2.2)
     minitest-handler (~> 1.1.4)
     sendgrid_build_essential (~> 0.0)
-  sendgrid_rbenv (0.1.0)
+  sendgrid_rbenv (0.2.0)
     rbenv (~> 1.7)
   windows (1.31.0)
     chef_handler (>= 0.0.0)
