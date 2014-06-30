@@ -1,0 +1,33 @@
+{
+  "name": "sendgrid_ubuntu-10.04_chef-10",
+  "description": "Ubuntu 10.04 with Chef 10",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "providers": [{
+        "name": "virtualbox",
+        "url": "http://repo.sjc1.sendgrid.net/images/vagrant/sendgrid_ubuntu-10.04_chef-10.30.2.box",
+        "checksum_type": "sha1",
+        "checksum": "0d453d359708aece3a9782b71268502db32af9d0"
+      }]
+    },
+    {
+      "version": "0.2.0",
+      "providers": [{
+        "name": "virtualbox",
+        "url": "http://repo.sjc1.sendgrid.net/images/vagrant/sendgrid_ubuntu-10.04_chef-10.30.4.box",
+        "checksum_type": "sha1",
+        "checksum": "3927fae7cd863797ed5873ccb5a7909ed5358abe"
+      }]
+    },
+    {
+      "version": "0.3.0",
+      "providers": [{
+        "name": "virtualbox",
+        "url": "http://repo.sjc1.sendgrid.net/images/vagrant/sendgrid_ubuntu-10.04_chef-10.32.2.box",
+        "checksum_type": "sha1",
+        "checksum": "e9d6febf136e6c641df131178bc0114b24b8914c"
+      }]
+    }
+  ]
+}

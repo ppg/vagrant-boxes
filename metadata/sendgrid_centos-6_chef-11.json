@@ -6,27 +6,27 @@
       "version": "0.1.0",
       "providers": [{
         "name": "virtualbox",
-        "url": "sendgrid_centos-6.5_chef-11.6.2.box",
+        "url": "http://repo.sjc1.sendgrid.net/images/vagrant/sendgrid_centos-6.5_chef-11.6.2.box",
         "checksum_type": "sha1",
-        "checksum": "FIXME"
+        "checksum": "3fba95a07b4cda986d8f758d15cdb3ed95ec0899"
       }]
     },
     {
       "version": "0.2.0",
       "providers": [{
         "name": "virtualbox",
-        "url": "sendgrid_centos-6.5_chef-11.10.4.box",
+        "url": "http://repo.sjc1.sendgrid.net/images/vagrant/sendgrid_centos-6.5_chef-11.10.4.box",
         "checksum_type": "sha1",
-        "checksum": "FIXME"
+        "checksum": "92aa1c504e0b18d543c0fa53ae13ebe04b3c4398"
       }]
     },
     {
       "version": "0.3.0",
       "providers": [{
         "name": "virtualbox",
-        "url": "/Users/mike/projects/sendgrid-ops/vagrant_boxes/sendgrid_centos-6.5_chef-11.12.4.box",
+        "url": "http://repo.sjc1.sendgrid.net/images/vagrant/sendgrid_centos-6.5_chef-11.12.4.box",
         "checksum_type": "sha1",
-        "checksum": "84580e17ebef19409712e41249eb9bd9da0d0310"
+        "checksum": "46de56aa010328a14a1b3e62233121d3334d9560"
       }]
     }
   ]
