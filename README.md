@@ -93,29 +93,6 @@ update the metadata appropriately:
     open metadata/...
     thor box:upload [box]
 
-## Updating Box URLs in other repositories
-
-Once the new boxes are available, the next step is to update all the clients
-that use them. Start by downloading all the cookbooks via the Thor task in
-[chef-data](https://github.com/sendgrid-ops/chef-data):
-
-    thor cookbooks:download
-    thor cookbooks:exec 'git pull'
-
-Now get the list of old base boxes:
-
-    cd ~/projects/sendgrid
-    grep -h 'box:' chef-*/.kitchen.yml | sort | uniq -c
-
-For each old base box, update it to the new version (via the Thor task in
-[chef-data](https://github.com/sendgrid-ops/chef-data)):
-
-    thor cookbooks:box_update <old> <new>
-
-Once all the base boxes are updated, commit and push your changes:
-
-    thor cookbooks:exec "git commit .kitchen.yml -m 'Update base boxes'; git push; true"
-
 ## Known Issues
 
 - Currently, integration tests are only run by Test-Kitchen. This means Packer
