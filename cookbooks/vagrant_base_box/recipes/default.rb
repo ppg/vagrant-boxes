@@ -11,16 +11,16 @@ execute 'aptitude update' do
 end
 
 if node['platform'] == 'centos'
-  service 'networking' do
+  service 'network' do
     action :nothing
   end
 
   template '/etc/sysconfig/network' do
     variables(
-      hostname: node['fqdn']
+      hostname: "#{node['hostname']}.vagrantup.com"
     )
     mode 00644
-    notifies :restart, 'service[networking]'
+    notifies :restart, 'service[network]', :immediately
   end
 end
 
