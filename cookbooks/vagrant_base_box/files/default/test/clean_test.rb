@@ -2,7 +2,7 @@ describe_recipe 'vagrant_base_box::clean' do
 
   it 'removes the virtualbox dependencies' do
     skip unless node['vagrant_base_box']['clean']['enable']
-    node['vagrant_base_box']['virtualbox']['dependencies'].each do |name, version|
+    node['vagrant_base_box']['virtualbox']['dependencies'].each do |name, _version|
       package(name).wont_be_installed
     end
   end

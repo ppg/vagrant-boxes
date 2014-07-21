@@ -8,6 +8,6 @@
 #
 node['vagrant_base_box']['services']['disable'].each do |obj|
   service obj do
-    action [ :disable, :stop ]
+    action [:disable, :stop]
   end
 end

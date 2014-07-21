@@ -21,11 +21,11 @@ end
 mount '/mnt' do
   device node['vagrant_base_box']['virtualbox']['guest_additions']['destination']
   options 'loop'
-  only_if { ::File.exists?(node['vagrant_base_box']['virtualbox']['guest_additions']['destination']) }
+  only_if { ::File.exist?(node['vagrant_base_box']['virtualbox']['guest_additions']['destination']) }
 end
 
 # Note: This always fails because X isn't installed (but that's OK)
 execute 'rm /var/log/vboxadd-install.log; echo "yes" | sh /mnt/VBoxLinuxAdditions.run; true' do
-  only_if { ::File.exists?('/mnt/VBoxLinuxAdditions.run') }
+  only_if { ::File.exist?('/mnt/VBoxLinuxAdditions.run') }
   notifies :umount, 'mount[/mnt]'
 end

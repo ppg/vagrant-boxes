@@ -21,4 +21,3 @@ execute 'printf "\nUseDNS no" >> /etc/ssh/sshd_config' do
   not_if "grep 'UseDNS no' /etc/ssh/sshd_config"
   notifies :restart, "service[#{sshd_service}]"
 end
-

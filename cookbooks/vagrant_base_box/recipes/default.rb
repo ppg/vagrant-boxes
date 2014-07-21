@@ -10,13 +10,13 @@ execute 'aptitude update' do
   only_if { node['platform'] == 'ubuntu' }
 end
 
-%w{
+%w(
   packages
   virtualbox
   vagrant
   sshd
   services
   clean
-}.each do |obj|
+).each do |obj|
   include_recipe "vagrant_base_box::#{obj}"
 end

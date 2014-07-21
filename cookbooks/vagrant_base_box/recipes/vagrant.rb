@@ -9,7 +9,7 @@
 user node['vagrant_base_box']['vagrant']['user'] do
   home node['vagrant_base_box']['vagrant']['home']
   password node['vagrant_base_box']['vagrant']['password']
-  supports :manage_home => true if node['platform'] == 'ubuntu'
+  supports manage_home: true if node['platform'] == 'ubuntu'
 end
 
 template '/etc/sudoers.d/vagrant' do

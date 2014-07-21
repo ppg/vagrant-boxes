@@ -15,7 +15,7 @@ when 'ubuntu'
     "linux-headers-#{node['kernel']['release']}" => nil
   }
 else
- {}
+  {}
 end
 
 default['vagrant_base_box']['vagrant']['user'] = 'vagrant'
@@ -24,9 +24,9 @@ default['vagrant_base_box']['vagrant']['password'] = '$1$HJpcvPyh$B48V.Ew2qABDud
 
 default['vagrant_base_box']['packages']['install'] = case platform
 when 'centos'
-  %w{ nfs-utils }
+  %w( nfs-utils )
 when 'ubuntu'
-  %w{ nfs-client }
+  %w( nfs-client )
 else
   []
 end
