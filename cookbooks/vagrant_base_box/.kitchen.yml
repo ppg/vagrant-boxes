@@ -27,6 +27,10 @@ suites:
       - recipe[vagrant_base_box::default]
     attributes:
       vagrant_base_box:
+        clean:
+          # If we disable cleaning, we won't need to keep installing the same
+          # packages over and over, which results in quicker testing.
+          enable: false
         virtualbox:
           guest_additions:
             # The VirtualBox additions are already deleted from the Opscode
