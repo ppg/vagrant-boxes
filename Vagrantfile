@@ -2,17 +2,18 @@ BOXES_PATH = File.expand_path(File.join('.vagrant.d', 'boxes'), Dir.home)
 
 Vagrant.configure('2') do |config|
   Dir[File.join(BOXES_PATH, '*')].map { |obj| File.basename(obj) }.each do |box|
-    config.vm.define box do |c|
+
+    box_name = "#{box}_default"
+    config.vm.define box_name do |c|
       c.vm.box = box
-      c.vm.host_name = "#{box.gsub(/[^a-z0-9\-]+/i, '-')}.test"
+      c.vm.host_name = "#{box_name.gsub(/[^a-z0-9\-]+/i, '-')}.test"
       c.ssh.forward_agent = true
     end
 
-    base_box = box
-    box = "#{box}_devtools"
-    config.vm.define box do |c|
-      c.vm.box = base_box
-      c.vm.host_name = "#{box.gsub(/[^a-z0-9\-]+/i, '-')}.test"
+    box_name = "#{box}_devtools"
+    config.vm.define box_name do |c|
+      c.vm.box = box
+      c.vm.host_name = "#{box_name.gsub(/[^a-z0-9\-]+/i, '-')}.test"
       c.ssh.forward_agent = true
 
       c.berkshelf.enabled = true
