@@ -16,12 +16,6 @@ We currently support the following platforms:
 
 Our boxes are currently hosted at: http://repo.sjc1.sendgrid.net/images/vagrant/
 
-We set the following VirtualBox options to prevent slow networking on CentOS 6
-(See: [Vagrant 1172](https://github.com/mitchellh/vagrant/issues/1172)):
-
-    --natdnsproxy1 off
-    --natdnshostresolver1 off
-
 ## How it Works
 
 Packer reads its configuration from `sendgrid.json` and uses Chef to provision
@@ -55,7 +49,7 @@ so that Packer knows which version of Chef to install. You can see what
 versions are available at http://www.getchef.com/chef/install/:
 
     packer build -var chef_version=10.32.2 sendgrid.json # Legacy Chef 10 boxes
-    packer build -var chef_version=11.12.4 -except=ubuntu-10.04 sendgrid.json
+    packer build -var chef_version=11.12.8 -except=ubuntu-10.04 sendgrid.json
 
 If Packer fails, you can debug it by running the command again with the
 `-debug` option or with `PACKER_LOG=1`. You might also want to try setting
