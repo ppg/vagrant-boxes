@@ -12,5 +12,4 @@ class Box < Thor
       run cmd
     end
   end
-
 end
