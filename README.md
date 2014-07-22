@@ -16,17 +16,9 @@ We currently support the following platforms:
 
 Our boxes are currently hosted at: http://repo.sjc1.sendgrid.net/images/vagrant/
 
-We set the following VirtualBox options to prevent slow networking on CentOS 6
-(See: [Vagrant 1172](https://github.com/mitchellh/vagrant/issues/1172)):
-
-    --natdnsproxy1 off
-    --natdnshostresolver1 off
-
 ## How it Works
 
-Packer reads its configuration from `sendgrid.json` and uses Chef to provision
-base boxes. As you'd expect, all provisioning cookbooks include their own
-Test-Kitchen suites to allow local testing before releasing new base boxes.
+Packer reads its configuration from a `.json` file and uses Chef to provision the boxes.
 
 ## Getting Started
 
@@ -38,24 +30,26 @@ then clone the repository:
 
 Install Packer:
 
+    brew tap homebrew/binary
     brew install packer
 
 ## Building Boxes
 
-Before releasing new base boxes, please verify your changes (if any) by testing
-them within the appropriate cookbook repo:
+In addition to the standard base boxes, we also maintain "devtools" boxes that include common development tools to speed up Chef runs. Use caution when using these boxes for testing cookbooks, as it may be difficult to know if your cookbook actually installed everything it needed, or if it's relying on something that happened to already be installed on the box.
 
-    cd cookbooks/vagrant_base_box
-    kitchen converge [...]
-    kitchen destroy [...]
-    cd -
+Note that the `chef_version` variable is required so that Packer knows which version of Chef to install. You can see what versions are available at http://www.getchef.com/chef/install/:
 
-Now we can build new boxes. Note that the `chef_version` variable is required
-so that Packer knows which version of Chef to install. You can see what
-versions are available at http://www.getchef.com/chef/install/:
-
-    packer build -var chef_version=10.32.2 sendgrid.json # Legacy Chef 10 boxes
-    packer build -var chef_version=11.12.4 -except=ubuntu-10.04 sendgrid.json
+    # Install cookbooks
+    berks vendor
+    
+    # Build legacy Chef 10 boxes
+    packer build -var chef_version=10.32.2 sendgrid.json
+    
+    # Build Chef 11 boxes
+    packer build -var chef_version=11.12.8 -except=ubuntu-10.04 sendgrid.json
+    
+    # Build "devtools" boxes
+    packer build -var chef_version=11.12.8 sendgrid_devtools.json
 
 If Packer fails, you can debug it by running the command again with the
 `-debug` option or with `PACKER_LOG=1`. You might also want to try setting
@@ -73,17 +67,6 @@ they work:
     vagrant ssh [vm]
     vagrant destroy
 
-### Building "devtools" Boxes
-
-The "devtools" boxes have common development tools preinstalled to speed up
-Chef runs. Use caution when using these boxes for testing cookbooks, as it may
-be difficult to know if your cookbook actually installed everything it needed,
-or if it's relying on something that happened to already be installed on the
-box.
-
-    vagrant status
-    thor box:devtools <box>
-
 ## Uploading Boxes
 
 Before uploading a new box to the repository, remember to checksum it and
@@ -95,6 +78,4 @@ update the metadata appropriately:
 
 ## Known Issues
 
-- Currently, integration tests are only run by Test-Kitchen. This means Packer
-itself does not run any tests after building a box. We might want to fix this
-someday.
+None!

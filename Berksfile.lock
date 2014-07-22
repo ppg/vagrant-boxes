@@ -1,7 +1,7 @@
 DEPENDENCIES
   sendgrid_minitest-handler (~> 0.2)
-  sendgrid_rbenv
-    path: ../chef-sendgrid_rbenv
+  sendgrid_rbenv (~> 0.1)
+  sendgrid_vagrant_base_box (~> 0.1)
 
 GRAPH
   apt (2.4.0)
@@ -32,9 +32,10 @@ GRAPH
   sendgrid_minitest-handler (0.2.2)
     minitest-handler (~> 1.1.4)
     sendgrid_build_essential (~> 0.0)
-  sendgrid_rbenv (0.2.0)
+  sendgrid_rbenv (0.2.1)
     rbenv (~> 1.7)
-  windows (1.31.0)
+  sendgrid_vagrant_base_box (0.1.0)
+  windows (1.32.3)
     chef_handler (>= 0.0.0)
   yum (3.2.2)
   yum-epel (0.3.6)

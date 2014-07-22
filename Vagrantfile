@@ -7,21 +7,5 @@ Vagrant.configure('2') do |config|
       c.vm.host_name = "#{box.gsub(/[^a-z0-9\-]+/i, '-')}.test"
       c.ssh.forward_agent = true
     end
-
-    base_box = box
-    box = "#{box}_devtools"
-    config.vm.define box do |c|
-      c.vm.box = base_box
-      c.vm.host_name = "#{box.gsub(/[^a-z0-9\-]+/i, '-')}.test"
-      c.ssh.forward_agent = true
-
-      c.berkshelf.enabled = true
-      c.vm.provision 'chef_solo' do |chef|
-        chef.run_list = %w(
-          sendgrid_minitest-handler
-          sendgrid_rbenv::default_rubies
-        )
-      end
-    end
   end
 end

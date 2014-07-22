@@ -3,5 +3,6 @@
 *.sha1
 .DS_Store
 .kitchen/
+berks-cookbooks/
 packer_cache/
 output-*/
