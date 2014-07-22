@@ -71,8 +71,8 @@
     {
       "type": "chef-solo",
       "install_command": "wget -O - http://opscode.com/chef/install.sh | bash -s -- -v {{user `chef_version`}}",
-      "cookbook_paths": ["./cookbooks"],
-      "run_list": ["vagrant_base_box"]
+      "cookbook_paths": ["berks-cookbooks"],
+      "run_list": ["sendgrid_vagrant_base_box"]
     }
   ],
   "post-processors": [
