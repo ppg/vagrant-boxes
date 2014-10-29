@@ -16,7 +16,7 @@
       "iso_checksum": "{{user `centos_iso_checksum`}}",
       "iso_checksum_type": "md5",
       "http_directory": "http",
-      "headless": false,
+      "headless": true,
       "boot_wait": "5s",
       "boot_command": [
         "<tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/centos-7.cfg<enter>"
