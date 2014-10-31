@@ -10,6 +10,7 @@ not that difficult) to just maintain our own.
 
 We currently support the following platforms:
 
+- Centos 7 + Chef 11
 - Centos 6 + Chef 11
 - Centos 6 + Chef 10 (Legacy)
 - Ubuntu 10.04 + Chef 10 (Legacy)
@@ -37,19 +38,21 @@ Install Packer:
 
 In addition to the standard base boxes, we also maintain "devtools" boxes that include common development tools to speed up Chef runs. Use caution when using these boxes for testing cookbooks, as it may be difficult to know if your cookbook actually installed everything it needed, or if it's relying on something that happened to already be installed on the box.
 
-Note that the `chef_version` variable is required so that Packer knows which version of Chef to install. You can see what versions are available at http://www.getchef.com/chef/install/:
+You can see what Chef versions are available at http://www.getchef.com/chef/install/:
 
     # Install cookbooks
     berks vendor
     
     # Build legacy Chef 10 boxes
-    packer build -var chef_version=10.32.2 sendgrid.json
+    packer build -var chef_version=10.32.2 ubuntu-10.04.json
+    packer build -var chef_version=10.32.2 centos-6.json
     
     # Build Chef 11 boxes
-    packer build -var chef_version=11.12.8 -except=ubuntu-10.04 sendgrid.json
+    packer build centos-6.json
+    packer build centos-7.json
     
     # Build "devtools" boxes
-    packer build -var chef_version=11.12.8 sendgrid_devtools.json
+    packer build centos-6_devtools.json
 
 If Packer fails, you can debug it by running the command again with the
 `-debug` option or with `PACKER_LOG=1`. You might also want to try setting

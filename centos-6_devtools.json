@@ -1,28 +1,27 @@
 {
   "variables": {
-    "centos_version_major": "6",
-    "centos_version_minor": "5",
-    "centos_iso_checksum": "83221db52687c7b857e65bfe60787838",
-    "chef_version": null
+    "centos_version_minor": "6",
+    "centos_iso_checksum": "7b1fb1a11499b31271ded79da6af8584",
+    "chef_version": "11.16.4"
   },
   "builders": [
     {
-      "name": "centos-{{user `centos_version_major`}}.{{user `centos_version_minor`}}",
+      "name": "centos-6.{{user `centos_version_minor`}}",
       "type": "virtualbox-iso",
       "guest_os_type": "RedHat_64",
       "vboxmanage": [
         ["modifyvm", "{{.Name}}", "--memory", "512"]
       ],
-      "iso_url": "http://mirrors.kernel.org/centos/{{user `centos_version_major`}}/isos/x86_64/CentOS-{{user `centos_version_major`}}.{{user `centos_version_minor`}}-x86_64-bin-DVD1.iso",
+      "iso_url": "http://mirrors.kernel.org/centos/6/isos/x86_64/CentOS-6.{{user `centos_version_minor`}}-x86_64-bin-DVD1.iso",
       "iso_checksum": "{{user `centos_iso_checksum`}}",
       "iso_checksum_type": "md5",
       "http_directory": "http",
       "headless": true,
       "boot_wait": "5s",
       "boot_command": [
-        "<tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/centos-{{user `centos_version_major`}}.cfg<enter>"
+        "<tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/centos-6.cfg<enter>"
       ],
-      "ssh_wait_timeout": "10m",
+      "ssh_wait_timeout": "15m",
       "ssh_username": "root",
       "ssh_password": "vagrant",
       "shutdown_command": "shutdown -h now"
