@@ -38,7 +38,7 @@ Install Packer:
 
 In addition to the standard base boxes, we also maintain "devtools" boxes that include common development tools to speed up Chef runs. Use caution when using these boxes for testing cookbooks, as it may be difficult to know if your cookbook actually installed everything it needed, or if it's relying on something that happened to already be installed on the box.
 
-You can see what Chef versions are available at http://www.getchef.com/chef/install/:
+You can see what Chef versions are available at https://www.getchef.com/download-chef-client/:
 
     # Install cookbooks
     berks vendor
