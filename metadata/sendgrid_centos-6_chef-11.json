@@ -37,15 +37,6 @@
         "checksum_type": "sha1",
         "checksum": "9f1b33d7e287efd70619bd90cc40acd4b8667da4"
       }]
-    },
-    {
-      "version": "0.5.0",
-      "providers": [{
-        "name": "virtualbox",
-        "url": "http://repo.sjc1.sendgrid.net/images/vagrant/sendgrid_centos-6.6_chef-11.16.4_1414625803.box",
-        "checksum_type": "sha1",
-        "checksum": "6a402479e846771c552e7a75e52e38eab4075f9b"
-      }]
     }
   ]
 }
