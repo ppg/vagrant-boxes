@@ -70,6 +70,16 @@ they work:
     vagrant ssh [vm]
     vagrant destroy
 
+## Mutating Boxes (e.g. libvirt)
+
+Install QEMU:
+
+    brew install qemu
+
+Mutate and export the box:
+
+    thor box:export <vm>
+
 ## Uploading Boxes
 
 Before uploading a new box to the repository, remember to checksum it and
