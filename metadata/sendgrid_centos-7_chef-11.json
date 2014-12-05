@@ -6,9 +6,9 @@
       "version": "0.1.0",
       "providers": [{
         "name": "virtualbox",
-        "url": "http://repo.sjc1.sendgrid.net/images/vagrant/sendgrid_centos-7.0_chef-11.16.4_1414623093.box",
+        "url": "http://repo.sjc1.sendgrid.net/images/vagrant/sendgrid_centos-7.0_chef-11.16.4_1417736046.box",
         "checksum_type": "sha1",
-        "checksum": "46809bf8c4e30870dffae3946b08d61d040c6c46"
+        "checksum": "3ce458c2c58dcf64c453271a378a8e3c6d8d0c6b"
       }]
     }
   ]
