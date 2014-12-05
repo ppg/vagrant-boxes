@@ -49,12 +49,20 @@
     },
     {
       "version": "0.5.1",
-      "providers": [{
-        "name": "virtualbox",
-        "url": "http://repo.sjc1.sendgrid.net/images/vagrant/sendgrid_centos-6.6_chef-11.16.4_1417554374.box",
-        "checksum_type": "sha1",
-        "checksum": "4bf515a92e46b397469600bf24e5e6b51ac2bdd7"
-      }]
+      "providers": [
+        {
+          "name": "virtualbox",
+          "url": "http://repo.sjc1.sendgrid.net/images/vagrant/sendgrid_centos-6.6_chef-11.16.4_1417554374.box",
+          "checksum_type": "sha1",
+          "checksum": "4bf515a92e46b397469600bf24e5e6b51ac2bdd7"
+        },
+        {
+          "name": "libvirt",
+          "url": "http://repo.sjc1.sendgrid.net/images/vagrant/sendgrid_centos-6.6_chef-11.16.4_1417554374.libvirt.box",
+          "checksum_type": "sha1",
+          "checksum": "a8b79962b3854dd2962fc08189f0e4a0eae47069"
+        }
+      ]
     }
   ]
 }
