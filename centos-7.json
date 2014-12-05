@@ -19,7 +19,7 @@
       "headless": true,
       "boot_wait": "5s",
       "boot_command": [
-        "<tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/centos-7.cfg<enter>"
+        "<up><tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/centos-7.cfg<enter>"
       ],
       "ssh_wait_timeout": "15m",
       "ssh_username": "root",
