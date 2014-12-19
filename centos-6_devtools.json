@@ -42,8 +42,8 @@
         "sendgrid_vagrant_base_box": {
           "packages": {
             "install": [
-	      "gcc",
-	      "kernel-devel",
+              "gcc",
+              "kernel-devel",
               "nfs-utils",
               "libmemcached-devel",
               "sqlite-devel",
