@@ -19,6 +19,21 @@
         "checksum_type": "sha1",
         "checksum": "45019bd279d8ab49a84a050e633c00afd7371005"
       }]
+    },
+    {
+      "version": "0.3.1",
+      "providers": [{
+        "name": "virtualbox",
+        "url": "http://repo.sjc1.sendgrid.net/images/vagrant/sendgrid_centos-6.6_chef-11.16.4_devtools_1419012998.box",
+        "checksum_type": "sha1",
+        "checksum": "b972389aebfb73abfc06456ebec6ce1fe51886cb"
+      },
+      {
+        "name": "libvirt",
+        "url": "http://repo.sjc1.sendgrid.net/images/vagrant/sendgrid_centos-6.6_chef-11.16.4_devtools_1419012998.libvirt.box",
+        "checksum_type": "sha1",
+        "checksum": "076041fe67834ba7180de220c9f67b1b032b9054"
+      }]
     }
   ]
 }

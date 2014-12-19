@@ -35,15 +35,15 @@
       "run_list": [
         "sendgrid_vagrant_base_box",
         "sendgrid_minitest-handler",
-        "sendgrid_rbenv::default_rubies"
+        "sendgrid_rbenv::default_rubies",
+        "sendgrid_vagrant_base_box::clean"
       ],
       "json": {
         "sendgrid_vagrant_base_box": {
-          "clean": {
-            "enable": false
-          },
           "packages": {
             "install": [
+	      "gcc",
+	      "kernel-devel",
               "nfs-utils",
               "libmemcached-devel",
               "sqlite-devel",
