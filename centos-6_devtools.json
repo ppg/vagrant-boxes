@@ -35,12 +35,46 @@
       "run_list": [
         "sendgrid_vagrant_base_box",
         "sendgrid_minitest-handler",
-        "sendgrid_rbenv::default_rubies"
+        "sendgrid_rbenv::default_rubies",
+        "sendgrid_vagrant_base_box::clean"
       ],
       "json": {
         "sendgrid_vagrant_base_box": {
-          "clean": {
-            "enable": false
+          "packages": {
+            "install": [
+              "gcc",
+              "kernel-devel",
+              "nfs-utils",
+              "libmemcached-devel",
+              "sqlite-devel",
+              "libxml2-devel",
+              "libxslt-devel"
+            ]
+          }
+        },
+        "sendgrid_rbenv": {
+          "default_rubies": {
+            "1.9.3-p484": {
+              "bundler": "1.6.3"
+            },
+            "1.9.3-p545": {
+              "bundler": "1.6.3"
+            },
+            "1.9.3-p547": {
+              "bundler": "1.6.3"
+            },
+            "2.0.0-p451": {
+              "bundler": "1.6.3"
+            },
+            "2.0.0-p481": {
+              "bundler": "1.6.3"
+            },
+            "2.1.2": {
+              "bundler": "1.6.3"
+            },
+            "2.1.5": {
+              "bundler": "1.6.3"
+            }
           }
         }
       }
